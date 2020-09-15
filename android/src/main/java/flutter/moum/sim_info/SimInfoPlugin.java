@@ -27,6 +27,9 @@ public class SimInfoPlugin implements MethodCallHandler {
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
+    if (registrar.activity() == null) {
+          return;
+    }
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter.moum.sim_info");
 
     channel.setMethodCallHandler(new SimInfoPlugin(registrar.activity()));
